@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
+import ModalTrivia from '../ModalTrivia/ModalTrivia'
 
-function TriviaCard({level}) {
-  const [isCorrect, setIsCorrect] = useState('false')
+function TriviaCard({level, user, setUsers}) {
+  const [isCorrect, setIsCorrect] = useState(null)
+  const [showModal, setShowModal] = useState(false)
+  const [victory, setVictory] = useState(false)
 
   const randomNumber = Math.floor(Math.random() * (4 - 0) + 0)
   const randomQuestion = level && level.questions[randomNumber]
-  console.log(randomQuestion)
 
   const handleSelect = (e) => {
     setIsCorrect(e.target.value)
-    
   }
 
   const validateQuestion = (e) => {
     e.preventDefault()
-    console.log(isCorrect)
+    !isCorrect ? alert("Debe seleccionar una respuesta") : setShowModal(true)
   }
   
 
@@ -22,7 +23,6 @@ function TriviaCard({level}) {
     <div>
       <form onSubmit={validateQuestion}>
         <h2>{randomQuestion && randomQuestion.question}</h2>
-        
           {randomQuestion && randomQuestion.answers.map((el,i) => (
             <label key={i} htmlFor={`answer${el.id}`}>
               <input type="radio" name="answers" id={`answer${el.id}`} value={el.is_correct} onChange={handleSelect} />
@@ -31,6 +31,15 @@ function TriviaCard({level}) {
           ))}
           <input type="submit" value="Comprobar Respuesta" />
       </form>
+      {showModal && 
+        <ModalTrivia 
+          setShowModal={setShowModal} 
+          isCorrect={isCorrect} 
+          user={user} 
+          level={level}
+          setUsers={setUsers}
+          setVictory={setVictory}
+        />}
     </div>
   )
 }
