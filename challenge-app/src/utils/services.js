@@ -34,4 +34,13 @@ export const services = {
     url: process.env.REACT_APP_API_URL_BASE + '/levels',
     method: 'GET'
   }, 
+
+  addHistory: {
+    url: process.env.REACT_APP_API_URL_BASE + '/history',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    }, 
+  },
+ 
 }
