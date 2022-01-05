@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { saveHistory } from '../../utils/saveHistory'
 import { userUpdate } from '../../utils/userUpdate'
 
-function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setVictory, setLose, setFinal}) {
+function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, setFinal}) {
 
   const navigate = useNavigate()
 
@@ -11,7 +11,6 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setVictory
   const continueValidate = async (e) => {
     e.preventDefault()
     if(isCorrect === "true") {
-      setVictory(true)
       await userUpdate(user, level, setUsers)
 
       //valida si el juego ya terminó
@@ -19,14 +18,13 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setVictory
         await saveHistory(user.id)
         setFinal(true)
       } 
-      // else {
-      //   navigate(`/trivia/${level.level + 1}`)
-      // }
-      
+      else {
+        navigate(`/trivia/${level.level + 1}`)
+      }
+      //si pierde se setea el estado y se guarda el historial
     } else {
       setLose(true)
       await saveHistory(user.id)
-      setVictory(false)
     }
     setShowModal(false)
   }

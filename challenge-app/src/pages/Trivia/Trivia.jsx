@@ -31,13 +31,14 @@ function Trivia() {
       <div>
         <h1>{`Nivel ${level && level.level || '' } `}</h1>
         <div>
-          <span>{`Acumulado: $${user && user.accum || ''}`}</span>
+          <span>{`Acumulado: $${user && user.accum}`}</span>
           <span>{`Premio a ganar: $${level && level.prize && level.prize.points ||''}`}</span>
         </div>
         <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} setFinal={setFinal} />
       </div>
 
-      <button>Retirarse</button>
+      {!final && <button>Retirarse</button>}
+      
 
 
       {/* MODALES */}
@@ -46,7 +47,6 @@ function Trivia() {
           title='Qué mal, has perdido...' 
           msg='Lamentablemente te has ido con $0'
           titleBtn='Lo intentaré de nuevo!'
-          url='/'
         />
       }
       {final &&
@@ -54,7 +54,6 @@ function Trivia() {
           title='FELICIDADES, has ganado!' 
           msg={`Te llevas el premio mayor de ${user.accum}`}
           titleBtn='Terminar'
-          url='/'
         />
       }
     </div>

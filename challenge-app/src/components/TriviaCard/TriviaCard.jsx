@@ -5,7 +5,6 @@ import ModalTrivia from '../ModalTrivia/ModalTrivia'
 function TriviaCard({level, user, setUsers, setLose, setFinal}) {
   const [isCorrect, setIsCorrect] = useState(null)
   const [showModal, setShowModal] = useState(false)
-  const [victory, setVictory] = useState(false)
   const [currQuestion, setCurrQuestion] = useState(null)
 
   
@@ -48,20 +47,9 @@ function TriviaCard({level, user, setUsers, setLose, setFinal}) {
           user={user} 
           level={level}
           setUsers={setUsers}
-          setVictory={setVictory}
           setLose={setLose}
           setFinal={setFinal}
         />}
-
-        {victory && 
-          <Modal 
-          title='FELICIDADES, has ganado esta ronda!' 
-          msg={`¿Estás preparado la siguiente? llevas acumulado ${user.accum}`}
-          titleBtn='Continuar'
-          url={`/trivia/${level.level + 1}`}
-          setVictory={setVictory}
-          />
-        }
     </div>
   )
 }
