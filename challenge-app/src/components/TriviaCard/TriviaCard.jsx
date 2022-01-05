@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
+import Modal from '../Modal/Modal'
 import ModalTrivia from '../ModalTrivia/ModalTrivia'
 
-function TriviaCard({level, user, setUsers, setLose}) {
+function TriviaCard({level, user, setUsers, setLose, setFinal}) {
   const [isCorrect, setIsCorrect] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [victory, setVictory] = useState(false)
   const [currQuestion, setCurrQuestion] = useState(null)
+
+  
 
   useEffect(() => {
     const randomQuestion = level && level.questions[Math.floor(Math.random() * (4 - 0))]
@@ -36,6 +39,8 @@ function TriviaCard({level, user, setUsers, setLose}) {
           ))}
           <input type="submit" value="Comprobar Respuesta" />
       </form>
+
+      {/* MODAL TRIVIA */}
       {showModal && 
         <ModalTrivia 
           setShowModal={setShowModal} 
@@ -45,7 +50,18 @@ function TriviaCard({level, user, setUsers, setLose}) {
           setUsers={setUsers}
           setVictory={setVictory}
           setLose={setLose}
+          setFinal={setFinal}
         />}
+
+        {victory && 
+          <Modal 
+          title='FELICIDADES, has ganado esta ronda!' 
+          msg={`¿Estás preparado la siguiente? llevas acumulado ${user.accum}`}
+          titleBtn='Continuar'
+          url={`/trivia/${level.level + 1}`}
+          setVictory={setVictory}
+          />
+        }
     </div>
   )
 }
