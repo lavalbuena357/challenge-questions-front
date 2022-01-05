@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes, Route } from "react-router-dom"
+import { Routes, Route, useParams } from "react-router-dom"
 import Main from './components/Main/Main'
 import Trivia from './pages/Trivia/Trivia'
 import History from './pages/History/History'
