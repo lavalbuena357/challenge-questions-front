@@ -42,5 +42,10 @@ export const services = {
       'Content-Type': 'application/json'
     }, 
   },
+
+  getHistory: {
+    url: process.env.REACT_APP_API_URL_BASE + '/history',
+    method: 'GET', 
+  },
  
 }
