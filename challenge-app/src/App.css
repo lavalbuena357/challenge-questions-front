@@ -1,0 +1,22 @@
+.header_ctn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 20px;
+  user-select: none;
+  background-color: gray;
+}
+
+.links_ctn {
+  display: flex;
+}
+
+.links_ctn a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: rgb(202, 202, 202);
+}
+
+.links_ctn a:hover {
+  color: rgb(255, 255, 255);
+}
