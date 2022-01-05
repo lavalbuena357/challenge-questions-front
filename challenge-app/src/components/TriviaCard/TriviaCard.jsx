@@ -1,18 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import ModalTrivia from '../ModalTrivia/ModalTrivia'
 
-function TriviaCard({level, user, setUsers}) {
+function TriviaCard({level, user, setUsers, setLose}) {
   const [isCorrect, setIsCorrect] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [victory, setVictory] = useState(false)
+  const [currQuestion, setCurrQuestion] = useState(null)
 
-  const randomNumber = Math.floor(Math.random() * (4 - 0) + 0)
-  const randomQuestion = level && level.questions[randomNumber]
+  useEffect(() => {
+    const randomQuestion = level && level.questions[Math.floor(Math.random() * (4 - 0))]
+    setCurrQuestion(randomQuestion)
+  }, [level])
 
+  //setea el valor de la respuesta dada
   const handleSelect = (e) => {
     setIsCorrect(e.target.value)
   }
 
+  //comprobar que se haya seleccionado una respuesta y abrir la ventana de validacion
   const validateQuestion = (e) => {
     e.preventDefault()
     !isCorrect ? alert("Debe seleccionar una respuesta") : setShowModal(true)
@@ -22,8 +27,8 @@ function TriviaCard({level, user, setUsers}) {
   return (
     <div>
       <form onSubmit={validateQuestion}>
-        <h2>{randomQuestion && randomQuestion.question}</h2>
-          {randomQuestion && randomQuestion.answers.map((el,i) => (
+        <h2>{currQuestion && currQuestion.question}</h2>
+          {currQuestion && currQuestion.answers.map((el,i) => (
             <label key={i} htmlFor={`answer${el.id}`}>
               <input type="radio" name="answers" id={`answer${el.id}`} value={el.is_correct} onChange={handleSelect} />
               {el.answer}
@@ -39,6 +44,7 @@ function TriviaCard({level, user, setUsers}) {
           level={level}
           setUsers={setUsers}
           setVictory={setVictory}
+          setLose={setLose}
         />}
     </div>
   )
