@@ -1,33 +1,37 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { petition } from '../../utils/petitions'
-import { services } from '../../utils/services'
+import { saveHistory } from '../../utils/saveHistory'
+import { userUpdate } from '../../utils/userUpdate'
 
-function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setVictory}) {
+function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setVictory, setLose, setFinal}) {
 
   const navigate = useNavigate()
 
-  const userUpdate = async () => {
-    const data = {
-      ...user, 
-      accum: user.accum + level.prize.points,
-      level_reached: user.level_reached >= 5 ? user.level_reached : user.level_reached+1
-    }
-    await petition(services.updatedUser.url+`/${user.id}`, services.updatedUser.method, services.updatedUser.headers, data)
-    setUsers(await petition(services.getUsers.url))
-  }
-
-  const continueValidate = async () => {
+  //validacion de respuesta
+  const continueValidate = async (e) => {
+    e.preventDefault()
     if(isCorrect === "true") {
       setVictory(true)
-      await userUpdate()
-      navigate(`/trivia/${level.level + 1}`)
+      await userUpdate(user, level, setUsers)
+
+      //valida si el juego ya terminó
+      if(user.level_reached >= 5) {
+        await saveHistory(user.id)
+        setFinal(true)
+      } 
+      // else {
+      //   navigate(`/trivia/${level.level + 1}`)
+      // }
+      
     } else {
+      setLose(true)
+      await saveHistory(user.id)
       setVictory(false)
     }
     setShowModal(false)
   }
 
+  //funcion para cambiar la respuesta
   const changeAnswer = () => {
     setShowModal(false)
   }
@@ -36,10 +40,10 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setVictory
     <div>
       <div>
         <h2>¿Está seguro de su respuesta?</h2>
-        <div>
-          <button onClick={continueValidate}>Sí, estoy seguro!</button>
-          <button onClick={changeAnswer}>No, cambiar mi respuesta</button>
-        </div>
+        <form onSubmit={continueValidate}>
+          <input type="submit" value="Sí, estoy seguro!" />
+          <input type="button" value="No, cambiar mi respuesta" onClick={changeAnswer} />
+        </form>
       </div>
     </div>
   )
