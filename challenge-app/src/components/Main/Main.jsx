@@ -6,7 +6,7 @@ import StartButton from '../StartButton/StartButton'
 function Main() {
   const [initialData, setInitialData] = useState([])
 
-  useEffect( async() => {
+  useEffect( async() => { // eslint-disable-line
     const users = await petition(services.getUsers.url)
     setInitialData(users[users.length-1])
   }, [])

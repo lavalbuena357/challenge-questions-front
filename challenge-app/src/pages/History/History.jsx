@@ -5,7 +5,7 @@ import { services } from '../../utils/services'
 function History() {
   const [history, setHistory] = useState([])
 
-  useEffect(async () => {
+  useEffect(async () => { // eslint-disable-line
     const gethistory = await petition(services.getHistory.url, services.getHistory.method)
     setHistory(gethistory)
   }, [])

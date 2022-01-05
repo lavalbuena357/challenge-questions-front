@@ -22,7 +22,6 @@ function TriviaCard({level, user, setUsers, setLose, setFinal}) {
     !isCorrect ? alert("Debe seleccionar una respuesta") : setShowModal(true)
   }
   
-
   return (
     <div>
       <form onSubmit={validateQuestion}>

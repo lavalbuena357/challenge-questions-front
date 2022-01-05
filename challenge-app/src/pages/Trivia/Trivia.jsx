@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import Modal from '../../components/Modal/Modal'
@@ -16,12 +17,12 @@ function Trivia() {
 
   const { level_reached } = useParams()  
 
-  useEffect(async () => { // eslint-disable-line
+  useEffect(async () => { 
     setUsers(await petition(services.getUsers.url))
   }, [level_reached])
 
   //cargar datos de usuario y llamado a la api del nivel
-  useEffect(async () => { // eslint-disable-line
+  useEffect(async () => { 
     setUser(users[users.length-1])
     const petitioLevels = await petition(`${services.getLevels.url}/${level_reached}`)
     setLevel(await petitioLevels[0])
