@@ -8,7 +8,7 @@ import './App.css'
 function App() {
 
   return (
-    <div>
+    <div className='appContainer'>
       <div className='header_ctn'>
         <h1>Trivia App</h1>
         <div className='links_ctn'>

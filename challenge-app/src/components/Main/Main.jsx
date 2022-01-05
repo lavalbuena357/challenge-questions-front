@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { petition } from '../../utils/petitions'
 import { services } from '../../utils/services'
 import StartButton from '../StartButton/StartButton'
+import style from './Main.module.css'
 
 function Main() {
   const [initialData, setInitialData] = useState([])
@@ -12,9 +13,9 @@ function Main() {
   }, [])
 
   return (
-    <div>
-      <span>{`Último premio $${initialData && initialData.accum}`}</span>
-      <h2>Responde las preguntas sin fallar y gana el gran acumulado!</h2>
+    <div className={style.container}>
+      <span className={style.lastPrize}>{`Último premio $${initialData && initialData.accum}`}</span>
+      <h2 className={style.subtitle}>Responde las preguntas sin fallar y gana el gran acumulado!</h2>
       <StartButton />
     </div>
   )

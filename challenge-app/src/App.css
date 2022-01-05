@@ -1,10 +1,20 @@
+.appContainer {
+  box-sizing: border-box;
+  background-color: rgb(228, 228, 228);
+  height: 100vh;
+}
+
 .header_ctn {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   padding: 20px;
   user-select: none;
-  background-color: gray;
+  background-color: rgb(169, 0, 73);
+}
+
+.header_ctn h1 {
+  color: white;
 }
 
 .links_ctn {
@@ -14,7 +24,7 @@
 .links_ctn a {
   margin: 0 10px;
   text-decoration: none;
-  color: rgb(202, 202, 202);
+  color: rgb(218, 216, 216);
 }
 
 .links_ctn a:hover {
