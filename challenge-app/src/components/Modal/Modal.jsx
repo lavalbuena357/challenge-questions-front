@@ -7,21 +7,16 @@ function Modal(props) {
 
   const navigate = useNavigate()
 
-  const retry = async () => {
-    const date = new Date().toISOString();
-    const data = {
-      date: date,
-      userId: props.user.id
-    }
-    await petition(services.addHistory.url, services.addHistory.method, services.addHistory.headers, data)
-    navigate('/')
+  const retry = async (url) => {
+    navigate(url)
+    props.setVictory(false)
   }
   
   return (
     <div>
       <h2>{props.title}</h2>
       <p>{props.msg}</p>
-      <button onClick={retry}>{props.titleBtn}</button>
+      <button onClick={() => retry(props.url)}>{props.titleBtn}</button>
     </div>
   )
 }
