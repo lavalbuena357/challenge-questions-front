@@ -6,6 +6,7 @@ import ModalQuit from '../../components/ModalQuit/ModalQuit'
 import TriviaCard from '../../components/TriviaCard/TriviaCard'
 import { petition } from '../../utils/petitions'
 import { services } from '../../utils/services'
+import style from './Trivia.module.css'
 
 function Trivia() {
   const [users, setUsers] = useState([])
@@ -29,15 +30,16 @@ function Trivia() {
   }, [users])
 
   return (
-    <div>
-      <div>
-        <h1>{`Nivel ${level && level.level || '' } `}</h1>
-        <div>
+    <div className={style.container}>
+      <div className={style.infoCtn}>
+        <h1>{`Ronda ${level && level.level || '' } `}</h1>
+        <div className={style.prizeCtn}>
           <span>{`Acumulado: $${user && user.accum}`}</span>
           <span>{`Premio a ganar: $${level && level.prize && level.prize.points ||''}`}</span>
         </div>
-        <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} setFinal={setFinal} />
+        
       </div>
+      <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} setFinal={setFinal} />
 
       {!final && <button onClick={() => setQuitShowModal(true)}>Retirarse</button>}
 

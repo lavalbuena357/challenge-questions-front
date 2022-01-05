@@ -1,0 +1,32 @@
+.container {
+  margin: 20px;
+  user-select: none;
+}
+
+.infoCtn {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.infoCtn h1 {
+  color: rgb(170, 0, 94);
+}
+
+.prizeCtn {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(0, 149, 182);
+  padding: 10px;
+  border-radius: 10px;
+  color: white;
+  box-shadow: 0 2px 5px rgb(179, 179, 179);
+}
+
+.prizeCtn span:first-child {
+  color: rgb(206, 255, 132);
+}
+
+.prizeCtn span:last-child {
+  color: rgb(255, 255, 90);
+}
