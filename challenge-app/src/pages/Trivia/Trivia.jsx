@@ -45,6 +45,7 @@ function Trivia() {
           title='Qué mal, has perdido...' 
           msg='Lamentablemente te has ido con $0'
           titleBtn='Lo intentaré de nuevo!'
+          user={user}
         />
       }
     </div>
