@@ -36,7 +36,7 @@ function Trivia() {
             <span>{`Acumulado: $${user && user.accum}`}</span>
             <span>{`Premio a ganar: $${level && level.prize.points}`}</span>
           </div>
-          <TriviaCard level={level} user={user} setUsers={setUsers} />
+          <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} />
         </div>
       }
       <button>Retirarse</button>
