@@ -1,0 +1,68 @@
+.container {
+  background-color: rgb(90, 0, 39);
+  border-radius: 2rem;
+  padding: 20px;
+  margin: 20px;
+  display: flex;
+  box-shadow: 0 0 20px rgb(0, 0, 0);
+  /* width: 70%; */
+}
+
+.infoCtn {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin-right: 1rem;
+}
+
+.infoCtn h1, .infoCtn h2 {
+  color: rgb(255, 255, 255);
+  margin: 0;
+  padding: 5px;
+}
+
+.infoCtn h2 {
+  font-weight: normal;
+}
+
+.infoCtn h1 span {
+  font-size: 1rem;
+}
+
+.container form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+  width: 50%;
+  margin: 0 20px;
+}
+
+.answersCtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+}
+
+.inputRadio {
+  display: none;
+}
+
+.answersCtn label {
+  padding: 5px 15px;
+  margin: 8px;
+  background-color: rgb(169, 0, 73);
+  width: 100%;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid rgb(252, 116, 175);
+}
+
+.answersCtn label:hover {
+  background-color: rgb(252, 116, 175);
+}

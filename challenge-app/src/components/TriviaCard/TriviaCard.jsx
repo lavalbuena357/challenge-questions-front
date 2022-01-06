@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import ModalTrivia from '../ModalTrivia/ModalTrivia'
+import style from './TriviaCard.module.css'
 
-function TriviaCard({level, user, setUsers, setLose, setFinal}) {
+function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
   const [isCorrect, setIsCorrect] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [currQuestion, setCurrQuestion] = useState(null)
@@ -23,16 +24,21 @@ function TriviaCard({level, user, setUsers, setLose, setFinal}) {
   }
   
   return (
-    <div>
-      <form onSubmit={validateQuestion}>
+    <div className={style.container}>
+      <div className={style.infoCtn}>
+        <h1>{`Ronda ${level && level.level || '' } `}<span>{`/${levels && levels.length}`}</span></h1>
         <h2>{currQuestion && currQuestion.question}</h2>
+      </div>
+      <form onSubmit={validateQuestion}>
+        <div className={style.answersCtn}>
           {currQuestion && currQuestion.answers.map((el,i) => (
             <label key={i} htmlFor={`answer${el.id}`}>
-              <input type="radio" name="answers" id={`answer${el.id}`} value={el.is_correct} onChange={handleSelect} />
+              <input type="radio" name="answers" className={style.inputRadio} id={`answer${el.id}`} value={el.is_correct} onChange={handleSelect} />
               {el.answer}
             </label>
           ))}
-          <input type="submit" value="Comprobar Respuesta" />
+        </div>
+          <input type="submit" value="Responder" />
       </form>
 
       {/* MODAL TRIVIA */}

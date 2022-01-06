@@ -12,6 +12,7 @@ function Trivia() {
   const [users, setUsers] = useState([])
   const [user, setUser] = useState(null)
   const [level, setLevel] = useState(null)
+  const [levels, setLevels] = useState([])
   const [final, setFinal] = useState(false)
   const [lose, setLose] = useState(false)
   const [showQuitModal, setQuitShowModal] = useState(false)
@@ -20,6 +21,7 @@ function Trivia() {
 
   useEffect(async () => { 
     setUsers(await petition(services.getUsers.url))
+    setLevels(await petition(services.getLevels.url))
   }, [level_reached])
 
   //cargar datos de usuario y llamado a la api del nivel
@@ -32,14 +34,13 @@ function Trivia() {
   return (
     <div className={style.container}>
       <div className={style.infoCtn}>
-        <h1>{`Ronda ${level && level.level || '' } `}</h1>
         <div className={style.prizeCtn}>
           <span>{`Acumulado: $${user && user.accum}`}</span>
           <span>{`Premio a ganar: $${level && level.prize && level.prize.points ||''}`}</span>
         </div>
         
       </div>
-      <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} setFinal={setFinal} />
+      <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} setFinal={setFinal} levels={levels} />
 
       {!final && <button onClick={() => setQuitShowModal(true)}>Retirarse</button>}
 
