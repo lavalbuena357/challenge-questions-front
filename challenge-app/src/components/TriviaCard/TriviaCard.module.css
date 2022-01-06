@@ -53,7 +53,7 @@
   display: none;
 }
 
-.answersCtn label {
+.sRadio {
   padding: 5px 15px;
   margin: 8px;
   background-color: rgb(169, 0, 73);
@@ -65,7 +65,20 @@
   border: 2px solid rgb(252, 116, 175);
 }
 
-.answersCtn label:hover {
+.sRadioActive {
+  padding: 5px 15px;
+  margin: 8px;
+  width: 100%;
+  text-align: center;
+  color: white;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid rgb(252, 116, 175);
+  box-shadow: 0 0 8px white;
+  background-color: rgb(247, 64, 143);
+}
+
+.sRadio:hover {
   box-shadow: 0 0 8px white;
   background-color: rgb(247, 64, 143);
 }
@@ -79,6 +92,16 @@
   cursor: pointer;
 }
 
+.btnSubmitDisabled {
+  border-style: none;
+  color: rgb(196, 196, 196);
+  padding: 10px 12px;
+  border-radius: 15px;
+  background-color: rgb(97, 97, 97);
+  cursor: default;
+}
+
 .btnSubmit:hover {
   background-color: rgb(118, 175, 2);
 }
+

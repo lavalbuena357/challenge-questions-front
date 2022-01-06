@@ -6,15 +6,22 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
   const [isCorrect, setIsCorrect] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [currQuestion, setCurrQuestion] = useState(null)
+  const [radioActive, setRadioActive] = useState(null)
 
   useEffect(() => {
     const randomQuestion = level && level.questions[Math.floor(Math.random() * (4 - 0))]
     setCurrQuestion(randomQuestion)
   }, [level])
 
+  let radios = {answer1: false, answer2: false, answer3: false, answer4: false}
   //setea el valor de la respuesta dada
   const handleSelect = (e) => {
     setIsCorrect(e.target.value)
+    for(let item in radios) {
+      if(e.target.id === item) radios[item] = true
+      else radios[item] = false
+    }
+    setRadioActive(radios)
   }
 
   //comprobar que se haya seleccionado una respuesta y abrir la ventana de validacion
@@ -22,6 +29,16 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
     e.preventDefault()
     !isCorrect ? alert("Debe seleccionar una respuesta") : setShowModal(true)
   }
+
+  const validateButtonEnabled =() => {
+    if(radioActive) {
+      const validate = Object.values(radioActive)
+      return validate.includes(true)
+    }
+  }
+
+  console.log(validateButtonEnabled())
+  
   
   return (
     <div className={style.container}>
@@ -31,14 +48,26 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
       </div>
       <form onSubmit={validateQuestion}>
         <div className={style.answersCtn}>
+         
           {currQuestion && currQuestion.answers.map((el,i) => (
-            <label key={i} htmlFor={`answer${el.id}`}>
-              <input type="radio" name="answers" className={style.inputRadio} id={`answer${el.id}`} value={el.is_correct} onChange={handleSelect} />
+            <label 
+              key={i} 
+              htmlFor={`answer${i+1}`} 
+              className={(radioActive && radioActive[`answer${i+1}`]) ? style.sRadioActive : style.sRadio}
+            >
+              <input 
+                type="radio" 
+                name="answers" 
+                className={style.inputRadio} 
+                id={`answer${i+1}`} 
+                value={el.is_correct} 
+                onChange={handleSelect} 
+              />
               {el.answer}
             </label>
           ))}
         </div>
-        <input className={style.btnSubmit} type="submit" value="Responder" />
+        <input className={validateButtonEnabled() ? style.btnSubmit: style.btnSubmitDisabled} type="submit" value="Responder" disabled={!validateButtonEnabled()} />
       </form>
 
       {/* MODAL TRIVIA */}
@@ -51,6 +80,8 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
           setUsers={setUsers}
           setLose={setLose}
           setFinal={setFinal}
+          radios={radios}
+          setRadioActive={setRadioActive}
         />}
     </div>
   )

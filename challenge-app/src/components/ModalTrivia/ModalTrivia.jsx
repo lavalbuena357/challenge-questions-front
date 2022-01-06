@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { saveHistory } from '../../utils/saveHistory'
 import { userUpdate } from '../../utils/userUpdate'
 
-function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, setFinal}) {
+function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, setFinal, radios, setRadioActive}) {
 
   const navigate = useNavigate()
 
@@ -11,6 +11,8 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, s
   const continueValidate = async (e) => {
     e.preventDefault()
     if(isCorrect === "true") {
+      radios = {answer1: false, answer2: false, answer3: false, answer4: false}
+      setRadioActive(radios)
       await userUpdate(user, level, setUsers)
 
       //valida si el juego ya terminó
