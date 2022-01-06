@@ -17,6 +17,7 @@ Los estilos fueron dados con css modules
 
 Primero cree el archivo .env con los datos que serán enviados por correo electrónico.
 
-### `clonar`
-### `cd challenge-app`
-### `npm start`
+#### `clonar`
+#### `cd challenge-app`
+#### `npm install`
+#### `npm start`
