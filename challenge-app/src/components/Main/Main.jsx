@@ -14,7 +14,7 @@ function Main() {
 
   return (
     <div className={style.container}>
-      <span className={style.lastPrize}>{`Último premio $${initialData && initialData.accum}`}</span>
+      <span className={style.lastPrize}>{`Último premio $${initialData && initialData.accum || 0}`}</span>
       <h2 className={style.subtitle}>Responde las preguntas sin fallar y gana el gran acumulado!</h2>
       <StartButton />
     </div>
