@@ -24,8 +24,8 @@ function ModalQuit({setQuitShowModal, user}) {
     <div className={style.container}>
       <div className={style.triviaCtn}>
         <form onSubmit={quitConfirm}>
-        <h2>¿Está seguro que desea retirarse?</h2>
-        <p>{`Si te retiras podrás llevarte el acumulado hasta el momento: $${user.accum}`}</p>
+          <h2>¿Está seguro que desea retirarse?</h2>
+          <p>{`Si te retiras podrás llevarte el acumulado hasta el momento: $${user.accum}`}</p>
           <input type="submit" value="Sí, estoy seguro!" />
           <input type="button" value="No, quiero continuar!" onClick={changeAnswer} />
         </form>
