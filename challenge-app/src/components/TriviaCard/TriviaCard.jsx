@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useEffect, useState } from 'react'
 import ModalTrivia from '../ModalTrivia/ModalTrivia'
 import style from './TriviaCard.module.css'
@@ -50,19 +51,8 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
         <div className={style.answersCtn}>
          
           {currQuestion && currQuestion.answers.map((el,i) => (
-            <label 
-              key={i} 
-              htmlFor={`answer${i+1}`} 
-              className={(radioActive && radioActive[`answer${i+1}`]) ? style.sRadioActive : style.sRadio}
-            >
-              <input 
-                type="radio" 
-                name="answers" 
-                className={style.inputRadio} 
-                id={`answer${i+1}`} 
-                value={el.is_correct} 
-                onChange={handleSelect} 
-              />
+            <label key={i} htmlFor={`answer${i+1}`} className={(radioActive && radioActive[`answer${i+1}`]) ? style.sRadioActive : style.sRadio} >
+              <input type="radio" name="answers" className={style.inputRadio} id={`answer${i+1}`} value={el.is_correct} onChange={handleSelect}  />
               {el.answer}
             </label>
           ))}

@@ -2,6 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { saveHistory } from '../../utils/saveHistory'
 import { userUpdate } from '../../utils/userUpdate'
+import style from './ModalTrivia.module.css'
 
 function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, setFinal, radios, setRadioActive}) {
 
@@ -37,10 +38,10 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, s
   }
 
   return (
-    <div>
-      <div>
-        <h2>¿Está seguro de su respuesta?</h2>
+    <div className={style.container}>
+      <div className={style.triviaCtn}>
         <form onSubmit={continueValidate}>
+          <h2>¿Está seguro de su respuesta?</h2>
           <input type="submit" value="Sí, estoy seguro!" />
           <input type="button" value="No, cambiar mi respuesta" onClick={changeAnswer} />
         </form>
