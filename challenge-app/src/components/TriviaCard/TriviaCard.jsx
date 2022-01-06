@@ -36,10 +36,7 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
       const validate = Object.values(radioActive)
       return validate.includes(true)
     }
-  }
-
-  console.log(validateButtonEnabled())
-  
+  }  
   
   return (
     <div className={style.container}>
@@ -52,7 +49,7 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
          
           {currQuestion && currQuestion.answers.map((el,i) => (
             <label key={i} htmlFor={`answer${i+1}`} className={(radioActive && radioActive[`answer${i+1}`]) ? style.sRadioActive : style.sRadio} >
-              <input type="radio" name="answers" className={style.inputRadio} id={`answer${i+1}`} value={el.is_correct} onChange={handleSelect}  />
+              <input type="radio" name="answers" className={style.inputRadio} id={`answer${i+1}`} value={el.is_correct} onChange={handleSelect} checked={radioActive && radioActive[`answer${i+1}`] || false}  />
               {el.answer}
             </label>
           ))}
