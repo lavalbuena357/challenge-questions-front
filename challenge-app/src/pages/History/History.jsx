@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import {petition} from '../../utils/petitions'
 import { services } from '../../utils/services'
+import style from './History.module.css'
 
 function History() {
   const [history, setHistory] = useState([])
@@ -11,8 +12,8 @@ function History() {
   }, [])
 
   return (
-    <div>
-      <table>
+    <div className={style.container}>
+      <table className={style.table}>
         <thead>
           <tr>
           <th>ID</th>

@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  background-color: rgb(106, 3, 47);
+}
+
+.table {
+  width: 100%;
+  margin: 20px;
+  padding: 20px;
+  text-align: center;
+  background-color: rgb(209, 209, 209);
+  /* border-radius: 3rem; */
+  border: 3px solid rgb(192, 44, 125);
+}
+
+.table th {
+  background-color: rgb(106, 3, 47);
+  color: white;
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.table td {
+  background-color: gray;
+  /* border-radius: 20px; */
+}
