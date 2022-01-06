@@ -14,7 +14,7 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, s
     if(isCorrect === "true") {
       radios = {answer1: false, answer2: false, answer3: false, answer4: false}
       setRadioActive(radios)
-      await userUpdate(user, level, setUsers)
+      await userUpdate(true, user, level, setUsers)
 
       //valida si el juego ya terminó
       if(user.level_reached >= 5) {
@@ -26,8 +26,9 @@ function ModalTrivia({setShowModal, isCorrect, user, level, setUsers, setLose, s
       }
       //si pierde se setea el estado y se guarda el historial
     } else {
-      setLose(true)
+      await userUpdate(false, user, level, setUsers)
       await saveHistory(user.id)
+      setLose(true)
     }
     setShowModal(false)
   }
