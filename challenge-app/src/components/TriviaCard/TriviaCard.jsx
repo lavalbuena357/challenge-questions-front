@@ -38,7 +38,7 @@ function TriviaCard({level, levels, user, setUsers, setLose, setFinal}) {
             </label>
           ))}
         </div>
-          <input type="submit" value="Responder" />
+        <input className={style.btnSubmit} type="submit" value="Responder" />
       </form>
 
       {/* MODAL TRIVIA */}

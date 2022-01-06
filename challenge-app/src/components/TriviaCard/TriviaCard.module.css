@@ -30,6 +30,7 @@
 
 .infoCtn h1 span {
   font-size: 1rem;
+  font-weight: normal;
 }
 
 .container form {
@@ -65,5 +66,19 @@
 }
 
 .answersCtn label:hover {
-  background-color: rgb(252, 116, 175);
+  box-shadow: 0 0 8px white;
+  background-color: rgb(247, 64, 143);
+}
+
+.btnSubmit {
+  border-style: none;
+  color: white;
+  padding: 10px 12px;
+  border-radius: 15px;
+  background-color: rgb(90, 135, 0);
+  cursor: pointer;
+}
+
+.btnSubmit:hover {
+  background-color: rgb(118, 175, 2);
 }
