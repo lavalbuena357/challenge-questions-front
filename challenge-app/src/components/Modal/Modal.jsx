@@ -1,5 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
+import style from './Modal.module.css'
 
 function Modal(props) {
 
@@ -10,10 +11,14 @@ function Modal(props) {
   }
   
   return (
-    <div>
-      <h2>{props.title}</h2>
-      <p>{props.msg}</p>
-      <button onClick={retry}>{props.titleBtn}</button>
+    <div className={style.container}>
+      <div className={style.triviaCtn}>
+        <div className={style.triviaBox}>
+          <h2>{props.title}</h2>
+          <p>{props.msg}</p>
+          <button onClick={retry}>{props.titleBtn}</button>
+        </div>
+      </div>
     </div>
   )
 }

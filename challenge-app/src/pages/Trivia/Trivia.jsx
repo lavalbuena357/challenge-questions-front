@@ -46,7 +46,7 @@ function Trivia() {
       {lose && 
         <Modal 
           title='Qué mal, has perdido...' 
-          msg='Lamentablemente te has ido con $0'
+          msg='Lo has perdido todo, lamentablemente te vas con $0'
           titleBtn='Lo intentaré de nuevo!'
         />
       }
