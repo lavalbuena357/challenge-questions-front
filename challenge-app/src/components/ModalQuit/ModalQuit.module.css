@@ -1,0 +1,63 @@
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.419);
+}
+
+.triviaCtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.triviaCtn form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  border-radius: 2rem;
+  box-shadow: 0 0 20px black;
+  background-color: rgb(90, 0, 39);
+  border: 2px solid rgb(216, 67, 131);
+}
+
+.triviaCtn form h2, .triviaCtn form p {
+  margin: 0;
+  padding-bottom: 1rem;
+  color: white;
+  text-align: center;
+}
+
+.triviaCtn form input {
+  margin: 0.5rem 0;
+  border-style: none;
+  padding: 1rem 0.5rem;
+  color: rgb(90, 0, 39);
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 20px;
+  cursor: pointer;
+  border: 2px solid rgb(186, 23, 93);
+}
+
+.triviaCtn form input:nth-child(3) {
+  background-color: chartreuse;
+}
+
+.triviaCtn form input:nth-child(3):hover {
+  background-color: rgb(171, 243, 99);
+}
+
+.triviaCtn form input:nth-child(4) {
+  background-color: rgb(237, 107, 163);
+}
+
+.triviaCtn form input:nth-child(4):hover {
+  background-color: rgb(245, 79, 151);
+}

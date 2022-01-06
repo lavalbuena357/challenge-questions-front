@@ -53,7 +53,7 @@ function Trivia() {
       {final &&
         <Modal 
           title='FELICIDADES, has ganado!' 
-          msg={`Te llevas el premio mayor de ${user.accum}`}
+          msg={`Te llevas el premio mayor de $${user.accum}`}
           titleBtn='Terminar'
         />
       }

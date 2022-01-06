@@ -1,6 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { saveHistory } from '../../utils/saveHistory'
+import style from './ModalQuit.module.css'
 
 function ModalQuit({setQuitShowModal, user}) {
 
@@ -20,11 +21,11 @@ function ModalQuit({setQuitShowModal, user}) {
   }
 
   return (
-    <div>
-      <div>
-        <h2>¿Está seguro que desea retirtarse??</h2>
-        <p>{`Si te retiras podrás llevarte el acumulado hasta el momento: $${user.accum}`}</p>
+    <div className={style.container}>
+      <div className={style.triviaCtn}>
         <form onSubmit={quitConfirm}>
+        <h2>¿Está seguro que desea retirarse?</h2>
+        <p>{`Si te retiras podrás llevarte el acumulado hasta el momento: $${user.accum}`}</p>
           <input type="submit" value="Sí, estoy seguro!" />
           <input type="button" value="No, quiero continuar!" onClick={changeAnswer} />
         </form>
