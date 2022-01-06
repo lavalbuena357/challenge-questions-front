@@ -38,11 +38,9 @@ function Trivia() {
           <span>{`Acumulado: $${user && user.accum}`}</span>
           <span>{`Premio a ganar: $${level && level.prize && level.prize.points ||''}`}</span>
         </div>
-        
+        {!final && <button onClick={() => setQuitShowModal(true)}>Retirarse</button>}
       </div>
       <TriviaCard level={level} user={user} setUsers={setUsers} setLose={setLose} setFinal={setFinal} levels={levels} />
-
-      {!final && <button onClick={() => setQuitShowModal(true)}>Retirarse</button>}
 
       {/* MODALES */}
       {lose && 
